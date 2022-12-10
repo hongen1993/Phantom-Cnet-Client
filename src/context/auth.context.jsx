@@ -15,7 +15,6 @@ function AuthProviderWrapper(props) {
   const authenticateUser = () => {
     // Get the stored token from the localStorage
     const storedToken = localStorage.getItem("authToken");
-
     // If the token exists in the localStorage
     if (storedToken) {
       // Send a request to the server using axios
@@ -29,7 +28,7 @@ function AuthProviderWrapper(props) {
 
       // Or using a service
       authService
-        .verify()
+        .verify(storedToken)
         .then((response) => {
           // If the server verifies that JWT token is valid  ✅
           const user = response.data;

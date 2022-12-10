@@ -11,6 +11,9 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
+import UsersPage from "./pages/UsersPage/UsersPage";
+import UserDetailsPage from "./pages/UserDetailsPage/UserDetailsPage";
+
 
 function App() {
   return (
@@ -45,6 +48,24 @@ function App() {
             </IsAnon>
           }
         />
+        <Route
+          path="/users"
+          element={
+            <IsAnon>
+              <UsersPage />
+            </IsAnon>
+          }
+        />
+
+        <Route
+          path="/user/:id"
+          element={
+            <IsAnon>
+              <UserDetailsPage />
+            </IsAnon>
+          }
+        />
+
       </Routes>
     </div>
   );

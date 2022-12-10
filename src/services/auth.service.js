@@ -13,8 +13,8 @@ class AuthService extends InitAxios {
     return this.axios.post("/signup", requestBody)
   }
 
-  verify = () => {
-    return this.axios.get("/verify")
+  verify = (token) => {
+    return this.axios.get("/verify", { headers: { 'authorization': `Bearer ${token}` } })
   }
 }
 

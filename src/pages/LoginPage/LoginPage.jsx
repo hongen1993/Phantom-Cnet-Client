@@ -33,9 +33,9 @@ function LoginPage() {
         // If the POST request is successful store the authentication token,
         // after the token is stored authenticate the user
         // and at last navigate to the home page
-        storeToken(response.data.authToken);
+        storeToken(response.data.token);
         authenticateUser();
-        navigate("/");
+        navigate("/profile");
       })
       .catch((error) => {
         // If the request resolves with an error, set the error message in the state

@@ -1,21 +1,45 @@
 import InitAxios from './initAxios.service';
 
-class UserService extends InitAxios {
+class UserAPI extends InitAxios {
     constructor() {
         super('user')
     }
 
-    profile = (token) => {
+    me(token) {
         return this.axios
-            .get('/profile', {
-                headers: {
-                    'authorization': `Bearer ${token}`
-                }
-            })
+            .get('/me',
+                { headers: { 'authorization': `Bearer ${token}` } }
+            )
             .then((response) => response.data)
-            .catch((err) => console.log(err))
+            .catch((err) => console.err(err))
+    }
+
+    getUsers(page) {
+        return this.axios
+            .get(`/all?limit=10&offset=${page}`)
+            .then((response) => response.data)
+            .catch((err) => console.err(err))
+    }
+
+    getUserById(id) {
+        return this.axios.get(`/${id}`)
+            .then((response) => response.data)
+            .catch((err) => console.err(err))
+    }
+
+    updateUser(id, body) {
+        return this.axios
+            .put(`/${id}`, body)
+            .then((response) => response.data)
+            .catch((err) => console.err(err))
+    }
+
+    deleteUser(id) {
+        return this.axios
+            .delete(`/${id}`)
+            .catch((err) => console.err(err))
     }
 
 }
 
-export default new UserService();
+export default new UserAPI();
