@@ -13,6 +13,7 @@ import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 import UsersPage from "./pages/UsersPage/UsersPage";
 import UserDetailsPage from "./pages/UserDetailsPage/UserDetailsPage";
+import TaskFormPage from "./pages/TaskFormPage/TaskFormPage";
 
 
 function App() {
@@ -63,6 +64,13 @@ function App() {
             <IsAnon>
               <UserDetailsPage />
             </IsAnon>
+          }
+        />
+
+        <Route
+          path="/newTaskcard"
+          element={
+            <TaskFormPage />
           }
         />
 

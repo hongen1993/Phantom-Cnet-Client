@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import "./ProfilePage.css"
 
 const ProfilePage = () => {
-
   const { user } = useContext(AuthContext)
 
   return (

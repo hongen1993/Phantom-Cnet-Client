@@ -20,7 +20,6 @@ const UserCard = ({ user, deleteUser }) => {
                 </Button>
             </Card.Footer>
         </Card>
-
     )
 }
 

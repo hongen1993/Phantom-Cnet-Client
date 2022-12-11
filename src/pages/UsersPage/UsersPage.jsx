@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { Card, Col, Container, Pagination, Row } from 'react-bootstrap';
-import UserAPI from '../../services/user.service';
-import UserCard from '../../components/UserCard/UserCard';
+import { useEffect, useState } from 'react'
+import { Card, Col, Container, Pagination, Row } from 'react-bootstrap'
+import UserAPI from '../../services/user.service'
+import UserCard from '../../components/UserCard/UserCard'
 
-import "./UsersPage.css";
+import "./UsersPage.css"
 
 const UserPage = () => {
     const [users, setUsers] = useState([])
@@ -11,24 +11,30 @@ const UserPage = () => {
     const [maxPage, setMaxPage] = useState(0)
 
     const reloadUsers = (pagination) => {
-        UserAPI.getUsers(pagination).then((usersDB) => {
-            setUsers(usersDB.results);
-            setMaxPage(usersDB.maxPage);
-        });
-    };
+        UserAPI
+            .getUsers(pagination)
+            .then((usersDB) => {
+                setUsers(usersDB.results)
+                setMaxPage(usersDB.maxPage)
+            })
+    }
 
     useEffect(() => {
-        UserAPI.getUsers().then((usersDB) => {
-            setUsers(usersDB.results)
-            setMaxPage(users.maxPage)
-        })
+        UserAPI
+            .getUsers()
+            .then((usersDB) => {
+                setUsers(usersDB.results)
+                setMaxPage(users.maxPage)
+            })
     }, [pagination])
 
     const deleteUser = (id) => {
-        UserAPI.deleteUser(id).then(() => {
-            reloadUsers(pagination);
-        });
-    };
+        UserAPI
+            .deleteUser(id)
+            .then(() => {
+                reloadUsers(pagination)
+            })
+    }
 
     return (
         <div >
