@@ -3,12 +3,13 @@ import { Button, Card } from 'react-bootstrap'
 // import MultiForm from '../MultiForm/MultiForm';
 import CreateTaskForm from '../../pages/CreateTaskForm/CreateTaskForm';
 
-const Taskcard = ({ user }) => {
-    const [taskcards, setTaskcards] = useState([])
+const Project = ({ user }) => {
+    const [projects, setProjects] = useState([])
 
     useEffect(() => {
-        const taskcardsArr = user.results.taskcards
-        setTaskcards(taskcardsArr)
+        console.log(user)
+        const projectsData = user.results.projects
+        setProjects(projectsData)
     }, [])
 
     return (
@@ -16,13 +17,13 @@ const Taskcard = ({ user }) => {
             {/* <MultiForm /> */}
             {/* <CreateTaskForm /> */}
             {
-                taskcards.map((taskcard) => {
+                projects.map((project) => {
                     return (
-                        <div key={taskcard._id}>
+                        <div key={project._id}>
                             <Card>
                                 <p>hello</p>
-                                <p>Title:{taskcard.title}</p>
-                                <p>Task:{taskcard.tasks}</p>
+                                <p>Title:{project.title}</p>
+                                <p>Task:{project.lists}</p>
                             </Card>
                         </div>
                     )
@@ -32,4 +33,4 @@ const Taskcard = ({ user }) => {
     )
 }
 
-export default Taskcard
+export default Project

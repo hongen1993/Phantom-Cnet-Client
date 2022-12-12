@@ -5,7 +5,7 @@ import UserAPI from '../../services/user.service'
 
 const MultiForm = () => {
     const [step, setStep] = useState(1)
-    const [taskcard, setTaskcard] = useState([])
+    const [project, setProject] = useState([])
 
     const nextStep = () => {
         setStep((currentStep) => currentState + 1)
@@ -15,14 +15,14 @@ const MultiForm = () => {
         setStep((currentStep) => currentState - 1)
     }
 
-    const createTaskcard = (event) => {
+    const createProject = (event) => {
         event.preventDefault();
     }
 
-    const updateTaskcard = (event) => {
+    const updateProject = (event) => {
         const { name, value } = event.target;
 
-        setTaskcard({ ...taskcard, [name]: value });
+        setProject({ ...project, [name]: value });
     }
     const inputValues = { title, task }
 

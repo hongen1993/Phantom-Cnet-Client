@@ -1,19 +1,19 @@
 import InitAxios from './initAxios.service';
 
-class TaskcardAPI extends InitAxios {
+class projectAPI extends InitAxios {
     constructor() {
         super('user')
     }
 
-    createTaskcard(token, body) {
+    createProject(token, body) {
         return this.axios
             .get('/me',
                 {
                     headers: { 'authorization': `Bearer ${token}` }
                 })
-            .post(`/newTaskcard`, body)
+            .post(`/newProject`, body)
             .then((response) => response.data)
     }
 }
 
-export default new TaskcardAPI();
+export default new projectAPI();

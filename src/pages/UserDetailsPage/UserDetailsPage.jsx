@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import UserAPI from '../../services/user.service'
-import Taskcard from '../../components/Taskcard/Taskcard'
+import Project from '../../components/Project/Project'
 import { Card, Col, Container, Pagination, Row } from 'react-bootstrap';
 
 
@@ -34,7 +34,7 @@ const UserDetailsPage = () => {
         <div>
             <h2>{user?.results.user.name}</h2>
             <p>{user?.results.user.email}</p>
-            <Taskcard user={user} />
+            <Project user={user} />
         </div>
     )
 }

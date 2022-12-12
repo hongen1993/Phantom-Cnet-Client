@@ -1,10 +1,10 @@
-import TaskcardAPI from '../../services/taskcard.service'
+import ProjectAPI from '../../services/project.service'
 
 const TaskFormPage = () => {
 
-    const createTaskcard = () => {
-        TaskcardAPI
-            .createTaskcard({ title: 'hello', task: 'ok' })
+    const createProject = () => {
+        ProjectAPI
+            .createProject({ title: 'hello', lists: 'ok' })
             .then(() => {
                 console.log('Create')
             })
@@ -14,7 +14,7 @@ const TaskFormPage = () => {
         <>
             <div>
                 <h1>Create</h1>
-                <div onClick={createTaskcard}>
+                <div onClick={createProject}>
                     click here</div>
             </div>
         </>

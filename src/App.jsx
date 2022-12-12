@@ -68,7 +68,7 @@ function App() {
         />
 
         <Route
-          path="/newTaskcard"
+          path="/newProject"
           element={
             <TaskFormPage />
           }
