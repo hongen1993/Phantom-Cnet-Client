@@ -1,19 +1,27 @@
 import InitAxios from './initAxios.service';
 
-class projectAPI extends InitAxios {
+class ProjectAPI extends InitAxios {
     constructor() {
         super('user')
     }
 
-    createProject(token, body) {
+    getProjectById(id) {
         return this.axios
-            .get('/me',
-                {
-                    headers: { 'authorization': `Bearer ${token}` }
-                })
-            .post(`/newProject`, body)
+            .get(`/project/${id}`)
+            .then((response) => response.data)
+    }
+
+    createProject(body) {
+        return this.axios
+            .post('/newProject', body)
+            .then((response) => response.data)
+    }
+
+    editProjectById(body, id) {
+        return this.axios
+            .put(`/editProject/${id}`, body)
             .then((response) => response.data)
     }
 }
 
-export default new projectAPI();
+export default new ProjectAPI();

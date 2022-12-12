@@ -1,11 +1,16 @@
-import { useEffect, useState } from 'react'
-import { Card, Col, Container, Pagination, Row } from 'react-bootstrap'
+import { useContext, useEffect, useState } from 'react'
+import { Col, Container, Pagination, Row } from 'react-bootstrap'
+import { AuthContext } from '../../context/auth.context'
+
 import UserAPI from '../../services/user.service'
 import UserCard from '../../components/UserCard/UserCard'
 
 import "./UsersPage.css"
 
 const UserPage = () => {
+    const { user } = useContext(AuthContext)
+    const ownId = user._id
+
     const [users, setUsers] = useState([])
     const [pagination, setPagination] = useState(0)
     const [maxPage, setMaxPage] = useState(0)
@@ -42,14 +47,17 @@ const UserPage = () => {
                 <Row xs={1} md={3} className='g-4'>
                     {
                         users.map((user) => {
-                            return (
-                                <Col key={user._id}>
-                                    <UserCard
-                                        user={user}
-                                        deleteUser={deleteUser}
-                                    />
-                                </Col>
-                            )
+                            if (ownId === user._id) {
+                            } else {
+                                return (
+                                    <Col key={user._id}>
+                                        <UserCard
+                                            user={user}
+                                            deleteUser={deleteUser}
+                                        />
+                                    </Col>
+                                )
+                            }
                         })
                     }
                 </Row>

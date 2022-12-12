@@ -8,12 +8,19 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 
-import Navbar from "./components/Navbar/Navbar";
+import IsAdmin from "./components/IsAdmin/IsAdmin";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
+
+import Navbar from "./components/Navbar/Navbar";
+
 import UsersPage from "./pages/UsersPage/UsersPage";
 import UserDetailsPage from "./pages/UserDetailsPage/UserDetailsPage";
+
+import ProjectPage from "./pages/ProjectPage/ProjectPage";
+
 import TaskFormPage from "./pages/TaskFormPage/TaskFormPage";
+
 
 
 function App() {
@@ -52,25 +59,27 @@ function App() {
         <Route
           path="/users"
           element={
-            <IsAnon>
+            <IsAdmin>
               <UsersPage />
-            </IsAnon>
+            </IsAdmin>
           }
         />
 
         <Route
           path="/user/:id"
           element={
-            <IsAnon>
+            <IsAdmin>
               <UserDetailsPage />
-            </IsAnon>
+            </IsAdmin>
           }
         />
 
         <Route
-          path="/newProject"
+          path="/project/:id"
           element={
-            <TaskFormPage />
+            <IsPrivate>
+              <ProjectPage />
+            </IsPrivate>
           }
         />
 

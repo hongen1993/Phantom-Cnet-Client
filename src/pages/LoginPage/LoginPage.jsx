@@ -37,9 +37,9 @@ function LoginPage() {
         authenticateUser();
         navigate("/profile");
       })
-      .catch((error) => {
+      .catch((err) => {
         // If the request resolves with an error, set the error message in the state
-        const errorDescription = error.response.data.message;
+        const errorDescription = err.message;
         setErrorMessage(errorDescription);
       });
   };

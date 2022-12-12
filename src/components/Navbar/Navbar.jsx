@@ -1,12 +1,17 @@
-import "./Navbar.css";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../context/auth.context";
+import "./Navbar.css"
+import { Link } from "react-router-dom"
+import { useContext, useState } from "react"
+import { AuthContext } from "../../context/auth.context"
+
+import { MdAccountCircle } from 'react-icons/md'
+import { RiCloseCircleLine } from 'react-icons/ri'
 
 function Navbar() {
-  // Subscribe to the AuthContext to gain access to
-  // the values from AuthContext.Provider's `value` prop
-  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext)
+  const [sideBar, setSideBar] = useState(false)
+
+  const showSideBar = () => setSideBar(!sideBar)
 
   return (
     <nav>
@@ -16,12 +21,28 @@ function Navbar() {
 
       {isLoggedIn && (
         <>
-          <button onClick={logOutUser}>Logout</button>
-
           <Link to="/profile">
             <button>Profile</button>
-            {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
           </Link>
+          <button onClick={logOutUser}>Logout</button>
+
+          <Link to="/#" className='open-profile'>
+            <MdAccountCircle size={30} onClick={showSideBar} />
+          </Link>
+          <nav className={sideBar ? 'nav-menu active' : 'nav-menu'}>
+            <ul className="nav-menu-items">
+              <li className="navbar-toggle">
+                <Link to='#' className="menu-bars">
+                  <RiCloseCircleLine />
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          {user.role === 'Admin' && (
+            <Link to='/users'>
+              <button>All Users</button>
+            </Link>
+          )}
 
           <span>{user && user.name}</span>
         </>

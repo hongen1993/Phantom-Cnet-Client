@@ -1,24 +1,25 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 import UserAPI from '../../services/user.service'
-import Project from '../../components/Project/Project'
-import { Card, Col, Container, Pagination, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 
 
 const UserDetailsPage = () => {
 
     const { id } = useParams()
-    const [user, setUser] = useState(undefined)
+    const [userDB, setUserDB] = useState(undefined)
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         UserAPI
             .getUserById(id)
-            .then((userDB) => {
-                setUser(userDB)
+            .then((userData) => {
+                setUserDB(userData)
             })
             .catch((err) => {
-                console.log(err.response.data.errorMessage);
+                console.log(err.message);
             })
             .finally(() => {
                 setLoading(false)
@@ -32,9 +33,11 @@ const UserDetailsPage = () => {
 
     return (
         <div>
-            <h2>{user?.results.user.name}</h2>
-            <p>{user?.results.user.email}</p>
-            <Project user={user} />
+            <div>
+                <h2>{userDB.results.user.name}</h2>
+                <p>{userDB.results.user.email}</p>
+                <Link to={`/profile/edit/${userDB.results.user._id}`}>Edit Profile</Link>
+            </div>
         </div>
     )
 }

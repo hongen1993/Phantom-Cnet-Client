@@ -4,27 +4,35 @@ import { Link } from 'react-router-dom'
 import UserAPI from '../../services/user.service'
 
 import "./ProfilePage.css"
-import Project from '../../components/Project/Project'
+import CreateProject from '../../components/CreateProject/CreateProject'
+import { Container, Row, Col } from 'react-bootstrap'
 
 const ProfilePage = () => {
 
   const { user } = useContext(AuthContext)
-  console.log(user)
   const [userDB, setUserDB] = useState(undefined)
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true)
+  const [projects, setProjects] = useState([])
 
-  useEffect(() => {
+  const settingProjects = (user) => {
     UserAPI
-      .getUserById(user._id)
+      .getProfile(user._id)
       .then((userData) => {
-        if (userData) setUserDB(userData)
+        if (userData) {
+          setUserDB(userData)
+          setProjects(userData.results.projects)
+        }
       })
       .catch((err) => {
-        console.log(err.response.data.errorMessage);
+        console.log(err.message)
       })
       .finally(() => {
         setLoading(false)
       })
+  }
+
+  useEffect(() => {
+    settingProjects(user)
   }, [])
 
   if (loading) {
@@ -36,13 +44,35 @@ const ProfilePage = () => {
     <div>
       <div>
         <h1>Profile page</h1>
-        <p>{user.email}</p>
-        <p>{user.name}</p>
-        <Link to={`/profile/edit/${user._id}`}>Edit Profile</Link>
+        <p>{userDB.results.user.email}</p>
+        <p>{userDB.results.user.name}</p>
+        <Link to={`/profile/edit/${userDB.results.user._id}`}>Edit Profile</Link>
       </div>
-      <Project user={userDB} />
+      <CreateProject settingProjects={settingProjects} />
+      <Container>
+        <Row>
+          {
+            projects.map((project) => {
+              return (
+                <Col sm={3} key={project._id}>
+                  <Form onSubmit={ }>
+                    <Form.Control
+                      onChange={ }
+                      type='text'
+                      name='strDrink'
+                      value={ }
+                      placeholder={project.title}
+                    />
+                  </Form>
+                  <Link to={`/project/${project._id}`}>Enter</Link>
+                </Col>
+              )
+            })
+          }
+        </Row>
+      </Container>
     </div>
-  );
+  )
 }
 
 export default ProfilePage

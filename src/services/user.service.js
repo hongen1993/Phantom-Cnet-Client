@@ -18,6 +18,12 @@ class UserAPI extends InitAxios {
             .catch((err) => console.error(err))
     }
 
+    getProfile(id) {
+        return this.axios.get(`/profile/${id}`)
+            .then((response) => response.data)
+            .catch((err) => console.error(err))
+    }
+
     updateUser(id, body) {
         return this.axios
             .put(`/${id}`, body)
