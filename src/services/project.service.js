@@ -17,7 +17,7 @@ class ProjectAPI extends InitAxios {
             .then((response) => response.data)
     }
 
-    editProjectById(body, id) {
+    updateProjectById(id, body) {
         return this.axios
             .put(`/editProject/${id}`, body)
             .then((response) => response.data)

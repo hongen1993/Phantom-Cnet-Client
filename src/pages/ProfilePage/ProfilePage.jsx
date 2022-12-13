@@ -1,17 +1,23 @@
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/auth.context'
 import { Link } from 'react-router-dom'
+
 import UserAPI from '../../services/user.service'
 
 import "./ProfilePage.css"
-import CreateProject from '../../components/CreateProject/CreateProject'
 import { Container, Row, Col } from 'react-bootstrap'
+
+import Project from '../../components/Project/Project'
+import CreateProject from '../../components/CreateProject/CreateProject'
 
 const ProfilePage = () => {
 
   const { user } = useContext(AuthContext)
+  // console.log(user)
   const [userDB, setUserDB] = useState(undefined)
+
   const [loading, setLoading] = useState(true)
+
   const [projects, setProjects] = useState([])
 
   const settingProjects = (user) => {
@@ -37,7 +43,7 @@ const ProfilePage = () => {
 
   if (loading) {
     // Cambiar por un spinner https://react-bootstrap.github.io/components/spinners/ :O
-    return <h1>Loading...</h1>;
+    return <h1>Loading...</h1>
   }
 
   return (
@@ -52,19 +58,11 @@ const ProfilePage = () => {
       <Container>
         <Row>
           {
-            projects.map((project) => {
+            projects.map((projectDB) => {
               return (
-                <Col sm={3} key={project._id}>
-                  <Form onSubmit={ }>
-                    <Form.Control
-                      onChange={ }
-                      type='text'
-                      name='strDrink'
-                      value={ }
-                      placeholder={project.title}
-                    />
-                  </Form>
-                  <Link to={`/project/${project._id}`}>Enter</Link>
+                <Col sm={3} >
+                  <Project key={projectDB._id} projectDB={projectDB} settingProjects={settingProjects} />
+                  <Link to={`/project/${projectDB._id}`}>Enter</Link>
                 </Col>
               )
             })

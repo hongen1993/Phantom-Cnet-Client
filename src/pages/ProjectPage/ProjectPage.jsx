@@ -31,7 +31,7 @@ const UpdateProject = () => {
     const editProject = (event) => {
         event.preventDefault();
         ProjectAPI
-            .editProjectById(id, project)
+            .updateProjectById(id, project)
             .then(() => {
                 Navigate(`/project/${id}`)
             })
