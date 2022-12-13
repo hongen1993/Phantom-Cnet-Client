@@ -15,8 +15,6 @@ const ProfilePage = () => {
 
   const { user } = useContext(AuthContext)
   // console.log(user)
-  const [userDB, setUserDB] = useState(undefined)
-  console.log(userDB)
 
   const [loading, setLoading] = useState(true)
 
@@ -27,7 +25,6 @@ const ProfilePage = () => {
       .getProfile(user._id)
       .then((userData) => {
         if (userData) {
-          setUserDB(userData)
           setProjects(userData.results.projects)
         }
       })
@@ -58,10 +55,7 @@ const ProfilePage = () => {
   return (
     <div>
       <div>
-        <h1>Profile page</h1>
-        <p>{userDB.results.user.email}</p>
-        <p>{userDB.results.user.name}</p>
-        <Link to={`/profile/edit/${userDB.results.user._id}`}>Edit Profile</Link>
+        <h2>Projects</h2>
       </div>
       <CreateProject settingProjects={settingProjects} />
       <Container>

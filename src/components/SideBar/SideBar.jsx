@@ -45,7 +45,7 @@ const SideBar = ({ user }) => {
                 </div>
                 <h4>Profile</h4>
                 <ul className="nav-menu-items">
-                    <img src></img>
+                    <img></img>
                     <li>
                         <p>{
                             userInfo.user.name
@@ -65,7 +65,11 @@ const SideBar = ({ user }) => {
                             {userInfo.projects[userInfo.projects.length - 1].title}
                         </Link>
                     </li>
-                    <li></li>
+                    <li>
+                        <Link to={`/profile/edit/${userInfo.user._id}`}>
+                            Edit Profile
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </>

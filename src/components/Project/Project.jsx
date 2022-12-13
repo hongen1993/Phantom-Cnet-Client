@@ -5,7 +5,6 @@ import { Form, Button } from 'react-bootstrap'
 
 import { useState, useContext } from 'react'
 
-
 const Project = ({ projectDB, settingProjects }) => {
     const { user } = useContext(AuthContext)
     const [editing, setEditing] = useState(false)
@@ -19,6 +18,7 @@ const Project = ({ projectDB, settingProjects }) => {
         const { name, value } = event.target
         setProject({ ...projectDB, [name]: value })
     }
+    // console.log(projectDB)
     const updateProject = (event) => {
         event.preventDefault()
         ProjectAPI
@@ -30,6 +30,7 @@ const Project = ({ projectDB, settingProjects }) => {
                 setEditing(false)
             })
     }
+
     if (editing === true) {
         return (
             <Form onSubmit={updateProject}>
@@ -40,7 +41,6 @@ const Project = ({ projectDB, settingProjects }) => {
                     placeholder={projectDB.title}
                 />
                 <Button variant='primary' type='submit' hidden />
-
             </Form>
         )
     } else {
