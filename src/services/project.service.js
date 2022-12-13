@@ -22,6 +22,12 @@ class ProjectAPI extends InitAxios {
             .put(`/editProject/${id}`, body)
             .then((response) => response.data)
     }
+
+    deleteProjectById(id) {
+        return this.axios
+            .delete(`/project/${id}`)
+            .then((response) => response.data);
+    }
 }
 
 export default new ProjectAPI();

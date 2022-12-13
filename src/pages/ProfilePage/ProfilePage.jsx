@@ -3,9 +3,10 @@ import { AuthContext } from '../../context/auth.context'
 import { Link } from 'react-router-dom'
 
 import UserAPI from '../../services/user.service'
+import ProjectAPI from '../../services/project.service'
 
 import "./ProfilePage.css"
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Button } from 'react-bootstrap'
 
 import Project from '../../components/Project/Project'
 import CreateProject from '../../components/CreateProject/CreateProject'
@@ -15,6 +16,7 @@ const ProfilePage = () => {
   const { user } = useContext(AuthContext)
   // console.log(user)
   const [userDB, setUserDB] = useState(undefined)
+  console.log(userDB)
 
   const [loading, setLoading] = useState(true)
 
@@ -37,6 +39,13 @@ const ProfilePage = () => {
       })
   }
 
+  const deleteProject = (id) => {
+    ProjectAPI
+      .deleteProjectById(id)
+      .then((
+        settingProjects(user)
+      ))
+  }
   useEffect(() => {
     settingProjects(user)
   }, [])
@@ -60,9 +69,12 @@ const ProfilePage = () => {
           {
             projects.map((projectDB) => {
               return (
-                <Col sm={3} >
-                  <Project key={projectDB._id} projectDB={projectDB} settingProjects={settingProjects} />
+                <Col sm={3} key={projectDB._id}>
+                  <Project projectDB={projectDB} settingProjects={settingProjects} />
                   <Link to={`/project/${projectDB._id}`}>Enter</Link>
+                  <Button variant='secondary' onClick={() => deleteProject(projectDB._id)}>
+                    Delete
+                  </Button>
                 </Col>
               )
             })
