@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react"
-import { Container } from 'react-bootstrap'
+import { Container, Button } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
-import ProjectTaskBoard from "../../components/ProjectTaskBoard/ProjectTaskBoard"
 
 import ProjectAPI from '../../services/project.service'
+
+import ProjectTaskBoard from "../../components/ProjectTaskBoard/ProjectTaskBoard"
+import AddPartner from "../../components/AddPartner/AddPartner"
 
 const UpdateProject = () => {
     const { id } = useParams()
     const [project, setProject] = useState(undefined)
     const [loading, setLoading] = useState(true)
+    const [show, setShow] = useState(false)
 
     const settingProject = (id) => {
         ProjectAPI
@@ -24,6 +27,14 @@ const UpdateProject = () => {
             })
     }
 
+    const updateProjectDB = (project) => {
+        ProjectAPI
+            .updateProjectById(project._id, project)
+            .then(() => {
+                settingProject(id)
+            })
+    }
+
     useEffect(() => {
         settingProject(id)
     }, [])
@@ -33,13 +44,18 @@ const UpdateProject = () => {
         return <h1>Loading...</h1>
     }
 
+    const handleShowSearch = () => setShow(!show);
+
     const projectData = project.project
 
     return (
         <>
             <h2>{projectData.title}</h2>
+            <Button onClick={handleShowSearch} >Add partner</Button>
+
+            <AddPartner projectData={projectData} settingProject={settingProject} show={show} id={id} />
             <Container>
-                <ProjectTaskBoard projectData={projectData} settingProject={settingProject} id={id} />
+                <ProjectTaskBoard projectData={projectData} updateProjectDB={updateProjectDB} />
             </Container>
         </>
     )

@@ -82,6 +82,5 @@ const ToDo = ({ project, setProject, updateProjectDB }) => {
             </div >
         )
     }
-
 }
 export default ToDo
