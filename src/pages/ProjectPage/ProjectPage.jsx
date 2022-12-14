@@ -10,7 +10,7 @@ const UpdateProject = () => {
     const [project, setProject] = useState(undefined)
     const [loading, setLoading] = useState(true)
 
-    useEffect(() => {
+    const settingProject = (id) => {
         ProjectAPI
             .getProjectById(id)
             .then((dbProject) => {
@@ -22,6 +22,10 @@ const UpdateProject = () => {
             .finally(() => {
                 setLoading(false)
             })
+    }
+
+    useEffect(() => {
+        settingProject(id)
     }, [])
 
     if (loading) {
@@ -35,7 +39,7 @@ const UpdateProject = () => {
         <>
             <h2>{projectData.title}</h2>
             <Container>
-                <ProjectWorkPlace projectData={projectData} />
+                <ProjectWorkPlace projectData={projectData} settingProject={settingProject} id={id} />
             </Container>
         </>
     )

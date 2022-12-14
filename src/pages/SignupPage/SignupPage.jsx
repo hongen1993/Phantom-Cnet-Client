@@ -2,6 +2,7 @@ import "./SignupPage.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import authService from "../../services/auth.service";
+import { Button } from 'react-bootstrap'
 
 function SignupPage() {
   const [email, setEmail] = useState("");
@@ -64,7 +65,7 @@ function SignupPage() {
         <label>Name:</label>
         <input type="text" name="name" value={name} onChange={handleName} />
 
-        <button type="submit">Sign Up</button>
+        <Button type="submit">Sign Up</Button>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}

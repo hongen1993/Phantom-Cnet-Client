@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
-import ProjectAPI from '../../services/project.service'
-import { Col, Form, Button } from 'react-bootstrap'
+import { useState } from 'react'
+import { Form, Button } from 'react-bootstrap'
 
-const ToDo = ({ projectData }) => {
+const ToDo = ({ projectData, updateProjectDB }) => {
     const [editing, setEditing] = useState(false)
     const [project, setProject] = useState(projectData)
 
@@ -20,40 +19,23 @@ const ToDo = ({ projectData }) => {
 
     const _updateProject = (event) => {
         event.preventDefault()
-        ProjectAPI
-            .updateProjectById(project._id, project)
-            .then(() => {
-                setEditing(false)
-            })
+
+        updateProjectDB(project)
+        setEditing(false)
     }
 
     const addTask = () => {
-
         const newtask = 'Insert task'
-        projectData.toDo.push(newtask)
 
-        ProjectAPI
-            .updateProjectById(projectData._id, projectData)
-            .then(() => {
-                // setEditing(true)
-            })
+        project.toDo.push(newtask)
+        updateProjectDB(project)
     }
-
-    // const removeTask = (index) => {
-    //     projectData.toDo.splice(index - 1, 1)
-
-    //     ProjectAPI
-    //         .updateProjectById(projectData._id, projectData)
-    //         .then(() => {
-    //             setEditing(true)
-    //         })
-    // }
 
     if (editing === true) {
         return (
             <Form onSubmit={_updateProject}>
                 {
-                    project.toDo.map((text, index) => {
+                    project?.toDo.map((text, index) => {
                         return (
                             <Form.Control
                                 key={`toDO${index}`}
@@ -72,24 +54,33 @@ const ToDo = ({ projectData }) => {
         return (
             <div>
                 <ul>{
-                    project.toDo.map((text, index) => {
+                    project?.toDo.map((text, index) => {
+
                         return (
-                            <>
-                                <div key={`toDo${index}`} onClick={() => { handleClick(true) }}>
-                                    <li>
-                                        <p>
-                                            {index + 1}: {text}
-                                        </p>
-                                    </li>
-                                </div>
-                                {/* <button onClick={removeTask(index)}>Delete</button> */}
-                            </>
+                            <li key={`toDo${index}`}>
+                                <p onClick={() => { handleClick(true) }}>
+                                    {index + 1}: {text}
+                                </p>
+                                <Button onClick={() => {
+                                    return (
+                                        project.inProcess.push(project.toDo[index]),
+                                        project.toDo.splice(index, 1),
+                                        updateProjectDB(project)
+                                    )
+                                }}>To Process</Button>
+                                <Button onClick={() => {
+                                    return (
+                                        project.toDo.splice(index, 1),
+                                        updateProjectDB(project)
+                                    )
+                                }}>Delete</Button>
+                            </li>
                         )
                     })
                 }
                 </ul>
-                <button onClick={addTask}>+</button>
-            </div>
+                <Button onClick={addTask}>+</Button>
+            </div >
         )
     }
 

@@ -2,6 +2,7 @@ import "./Navbar.css"
 import { Link } from "react-router-dom"
 import { useContext } from "react"
 import { AuthContext } from "../../context/auth.context"
+import { Button } from 'react-bootstrap'
 
 import SideBar from "../SideBar/SideBar"
 
@@ -12,21 +13,21 @@ function Navbar() {
   return (
     <nav>
       <Link to="/">
-        <button>Home</button>
+        <Button>Home</Button>
       </Link>
 
       {isLoggedIn && (
         <>
           <Link to="/profile">
-            <button>Profile</button>
+            <Button>Profile</Button>
           </Link>
-          <button onClick={logOutUser}>Logout</button>
+          <Button onClick={logOutUser}>Logout</Button>
 
           <SideBar user={user} />
 
           {user.role === 'Admin' && (
             <Link to='/users'>
-              <button>All Users</button>
+              <Button>All Users</Button>
             </Link>
           )}
 
@@ -37,11 +38,11 @@ function Navbar() {
         <>
           <Link to="/signup">
             {" "}
-            <button>Sign Up</button>{" "}
+            <Button>Sign Up</Button>{" "}
           </Link>
           <Link to="/login">
             {" "}
-            <button>Login</button>{" "}
+            <Button>Login</Button>{" "}
           </Link>
         </>
       )}
