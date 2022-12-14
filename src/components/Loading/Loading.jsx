@@ -1,4 +1,4 @@
-import "./Loading.css";
+import "./Loading.css"
 
 const Loading = () => {
   return (
@@ -12,4 +12,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default Loading

@@ -1,13 +1,13 @@
-import { useContext } from "react";
-import { AuthContext } from "../../context/auth.context";
-import { Navigate } from "react-router-dom";
-import Loading from "../Loading/Loading";
+import { useContext } from "react"
+import { AuthContext } from "../../context/auth.context"
+import { Navigate } from "react-router-dom"
+import Loading from "../Loading/Loading"
 
 function IsAdmin({ children }) {
-    const { isLoggedIn, isLoading, user } = useContext(AuthContext);
+    const { isLoggedIn, isLoading, user } = useContext(AuthContext)
 
     if (isLoading) {
-        return <Loading />;
+        return <Loading />
     }
 
     if (isLoggedIn && user.role === 'User') {
@@ -15,9 +15,9 @@ function IsAdmin({ children }) {
     }
 
     if (!isLoggedIn) {
-        return <Navigate to="/login" />;
+        return <Navigate to="/login" />
     }
-    return children;
+    return children
 }
 
-export default IsAdmin;
+export default IsAdmin

@@ -1,4 +1,4 @@
-import InitAxios from './initAxios.service';
+import InitAxios from './initAxios.service'
 
 class UserAPI extends InitAxios {
     constructor() {
@@ -39,4 +39,4 @@ class UserAPI extends InitAxios {
 
 }
 
-export default new UserAPI();
+export default new UserAPI()

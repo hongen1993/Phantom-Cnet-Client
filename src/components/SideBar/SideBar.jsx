@@ -11,7 +11,7 @@ import UserAPI from '../../services/user.service'
 const SideBar = ({ user }) => {
     const [sideBar, setSideBar] = useState(false)
     const [userData, setUserData] = useState(undefined)
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true)
 
     const showSideBar = () => setSideBar(!sideBar)
 
@@ -22,16 +22,16 @@ const SideBar = ({ user }) => {
                 setUserData(userDB)
             })
             .catch((err) => {
-                console.log(err.response.data.errorMessage);
+                console.log(err.response.data.errorMessage)
             })
             .finally(() => {
-                setLoading(false);
+                setLoading(false)
             })
     }, [])
 
     if (loading) {
         // Cambiar por un spinner https://react-bootstrap.github.io/components/spinners/ :O
-        return <h1>Loading...</h1>;
+        return <h1>Loading...</h1>
     }
 
     const userInfo = userData.results

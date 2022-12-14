@@ -1,8 +1,10 @@
-import ToDo from '../../components/ToDo/ToDo'
+import ToDo from '../ToDo/ToDo'
 import { Col, Row, Button } from 'react-bootstrap'
 import ProjectAPI from '../../services/project.service'
+import { useState } from 'react'
 
-const ProjectWorkPlace = ({ projectData, settingProject, id }) => {
+const ProjectTaskBoard = ({ projectData, settingProject, id }) => {
+    const [project, setProject] = useState(projectData)
 
     const updateProjectDB = (project) => {
         ProjectAPI
@@ -16,29 +18,30 @@ const ProjectWorkPlace = ({ projectData, settingProject, id }) => {
         <Row>
             <Col sm={4}>
                 <h3>To Do</h3>
-                <ToDo projectData={projectData} updateProjectDB={updateProjectDB} />
+                <ToDo project={project} setProject={setProject} updateProjectDB={updateProjectDB} />
             </Col>
             <Col sm={4}>
                 <h3>In process</h3>
                 <ul>{
-                    projectData?.inProcess.map((text, index) => {
+                    project?.inProcess.map((text, index) => {
                         return (
                             <li key={`inProcess${index}`}>
                                 <p>{index + 1}: {text}</p>
                                 <Button onClick={() => {
                                     return (
-                                        projectData.done.push(projectData.inProcess[index]),
-                                        projectData.inProcess.splice(index, 1),
-                                        updateProjectDB(projectData)
-                                    )
-                                }}>Done</Button>
-                                <Button onClick={() => {
-                                    return (
-                                        projectData.toDo.push(projectData.inProcess[index]),
-                                        projectData.inProcess.splice(index, 1),
-                                        updateProjectDB(projectData)
+                                        project.toDo.push(project.inProcess[index]),
+                                        project.inProcess.splice(index, 1),
+                                        updateProjectDB(project)
                                     )
                                 }}>To Do</Button>
+                                <Button onClick={() => {
+                                    return (
+                                        project.done.push(project.inProcess[index]),
+                                        project.inProcess.splice(index, 1),
+                                        updateProjectDB(project)
+                                    )
+                                }}>Done</Button>
+
                             </li>
                         )
                     })
@@ -47,23 +50,24 @@ const ProjectWorkPlace = ({ projectData, settingProject, id }) => {
             <Col sm={4}>
                 <h3>Done</h3>
                 <ul>{
-                    projectData?.done.map((text, index) => {
+                    project?.done.map((text, index) => {
                         return (
                             <li key={`done${index}`}>
                                 <p>{index + 1}: {text}</p>
                                 <Button onClick={() => {
                                     return (
-                                        projectData.done.splice(index, 1),
-                                        updateProjectDB(projectData)
-                                    )
-                                }}>Remove</Button>
-                                <Button onClick={() => {
-                                    return (
-                                        projectData.inProcess.push(projectData.done[index]),
-                                        projectData.done.splice(index, 1),
-                                        updateProjectDB(projectData)
+                                        project.inProcess.push(project.done[index]),
+                                        project.done.splice(index, 1),
+                                        updateProjectDB(project)
                                     )
                                 }}>To Do</Button>
+                                <Button onClick={() => {
+                                    return (
+                                        project.done.splice(index, 1),
+                                        updateProjectDB(project)
+                                    )
+                                }}>Remove</Button>
+
                             </li>
                         )
                     })
@@ -73,4 +77,4 @@ const ProjectWorkPlace = ({ projectData, settingProject, id }) => {
     )
 }
 
-export default ProjectWorkPlace
+export default ProjectTaskBoard

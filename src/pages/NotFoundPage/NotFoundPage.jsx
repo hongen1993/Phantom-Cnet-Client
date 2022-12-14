@@ -1,4 +1,4 @@
-import "./NotFoundPage.css";
+import "./NotFoundPage.css"
 
 function NotFoundPage() {
   return (
@@ -9,4 +9,4 @@ function NotFoundPage() {
   );
 }
 
-export default NotFoundPage;
+export default NotFoundPage

@@ -14,7 +14,7 @@ class InitAxios {
                 config.headers = { Authorization: `Bearer ${storedToken}` }
             }
 
-            return config;
+            return config
         })
     }
 }

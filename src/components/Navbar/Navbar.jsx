@@ -19,7 +19,7 @@ function Navbar() {
       {isLoggedIn && (
         <>
           <Link to="/profile">
-            <Button>Profile</Button>
+            <Button>Projects</Button>
           </Link>
           <Button onClick={logOutUser}>Logout</Button>
 
@@ -50,4 +50,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Navbar

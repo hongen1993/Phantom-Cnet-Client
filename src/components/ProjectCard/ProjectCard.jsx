@@ -5,7 +5,7 @@ import { Form, Button } from 'react-bootstrap'
 
 import { useState, useContext } from 'react'
 
-const Project = ({ projectDB, settingProjects }) => {
+const ProjectCard = ({ projectDB, settingProjects }) => {
     const { user } = useContext(AuthContext)
     const [editing, setEditing] = useState(false)
     const [project, setProject] = useState(undefined)
@@ -53,4 +53,4 @@ const Project = ({ projectDB, settingProjects }) => {
 
 }
 
-export default Project
+export default ProjectCard

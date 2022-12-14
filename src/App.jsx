@@ -1,23 +1,23 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom"
 
-import "./App.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
 
-import HomePage from "./pages/HomePage/HomePage";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import SignupPage from "./pages/SignupPage/SignupPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
+import Navbar from "./components/Navbar/Navbar"
 
-import IsAdmin from "./components/IsAdmin/IsAdmin";
-import IsPrivate from "./components/IsPrivate/IsPrivate";
-import IsAnon from "./components/IsAnon/IsAnon";
+import HomePage from "./pages/HomePage/HomePage"
+import SignupPage from "./pages/SignupPage/SignupPage"
+import LoginPage from "./pages/LoginPage/LoginPage"
 
-import Navbar from "./components/Navbar/Navbar";
+import UserProjectsPage from "./pages/UserProjectsPage/UserProjectsPage"
+import UserProjectPage from "./pages/UserProjectPage/UserProjectPage"
 
-import UsersPage from "./pages/UsersPage/UsersPage";
-import UserDetailsPage from "./pages/UserDetailsPage/UserDetailsPage";
+import AdminGetUsersPage from "./pages/AdminGetUsersPage/AdminGetUsersPage"
+import AdminGetUserPage from "./pages/AdminGetUserPage/AdminGetUserPage"
 
-import ProjectPage from "./pages/ProjectPage/ProjectPage";
+import IsAdmin from "./components/IsAdmin/IsAdmin"
+import IsPrivate from "./components/IsPrivate/IsPrivate"
+import IsAnon from "./components/IsAnon/IsAnon"
 
 function App() {
   return (
@@ -25,16 +25,12 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
 
         <Route
-          path="/profile"
+          path="/"
           element={
-            <IsPrivate>
-              <ProfilePage />
-            </IsPrivate>
-          }
-        />
+            <HomePage />
+          } />
 
         <Route
           path="/signup"
@@ -44,6 +40,7 @@ function App() {
             </IsAnon>
           }
         />
+
         <Route
           path="/login"
           element={
@@ -52,11 +49,30 @@ function App() {
             </IsAnon>
           }
         />
+
+        <Route
+          path="/profile"
+          element={
+            <IsPrivate>
+              <UserProjectsPage />
+            </IsPrivate>
+          }
+        />
+
+        <Route
+          path="/project/:id"
+          element={
+            <IsPrivate>
+              <UserProjectPage />
+            </IsPrivate>
+          }
+        />
+
         <Route
           path="/users"
           element={
             <IsAdmin>
-              <UsersPage />
+              <AdminGetUsersPage />
             </IsAdmin>
           }
         />
@@ -65,23 +81,14 @@ function App() {
           path="/user/:id"
           element={
             <IsAdmin>
-              <UserDetailsPage />
+              <AdminGetUserPage />
             </IsAdmin>
-          }
-        />
-
-        <Route
-          path="/project/:id"
-          element={
-            <IsPrivate>
-              <ProjectPage />
-            </IsPrivate>
           }
         />
 
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

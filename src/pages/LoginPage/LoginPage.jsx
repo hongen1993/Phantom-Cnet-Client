@@ -1,25 +1,25 @@
-import "./LoginPage.css";
-import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/auth.context";
-import authService from "../../services/auth.service";
+import "./LoginPage.css"
+import { useState, useContext } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { AuthContext } from "../../context/auth.context"
+import authService from "../../services/auth.service"
 import { Button } from 'react-bootstrap'
 
 function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(undefined);
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [errorMessage, setErrorMessage] = useState(undefined)
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+  const { storeToken, authenticateUser } = useContext(AuthContext)
 
-  const handleEmail = (e) => setEmail(e.target.value);
-  const handlePassword = (e) => setPassword(e.target.value);
+  const handleEmail = (e) => setEmail(e.target.value)
+  const handlePassword = (e) => setPassword(e.target.value)
 
   const handleLoginSubmit = (e) => {
-    e.preventDefault();
-    const requestBody = { email, password };
+    e.preventDefault()
+    const requestBody = { email, password }
 
     // Send a request to the server using axios
     /* 
@@ -34,16 +34,16 @@ function LoginPage() {
         // If the POST request is successful store the authentication token,
         // after the token is stored authenticate the user
         // and at last navigate to the home page
-        storeToken(response.data.token);
-        authenticateUser();
-        navigate("/profile");
+        storeToken(response.data.token)
+        authenticateUser()
+        navigate("/profile")
       })
       .catch((err) => {
         // If the request resolves with an error, set the error message in the state
-        const errorDescription = err.message;
-        setErrorMessage(errorDescription);
-      });
-  };
+        const errorDescription = err.message
+        setErrorMessage(errorDescription)
+      })
+  }
 
   return (
     <div className="LoginPage">
@@ -68,7 +68,7 @@ function LoginPage() {
       <p>Don't have an account yet?</p>
       <Link to={"/signup"}> Sign Up</Link>
     </div>
-  );
+  )
 }
 
-export default LoginPage;
+export default LoginPage

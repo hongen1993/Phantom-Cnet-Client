@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
-import UserAPI from '../services/user.service';
+import UserAPI from '../services/user.service'
 
 const EditProfile = () => {
-    const { user } = useContext(AuthContext);
-    const [profile, setProfile] = useState(user);
+    const { user } = useContext(AuthContext)
+    const [profile, setProfile] = useState(user)
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {

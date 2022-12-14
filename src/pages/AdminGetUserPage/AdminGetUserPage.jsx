@@ -3,14 +3,12 @@ import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 import UserAPI from '../../services/user.service'
-import { Col, Container, Row } from 'react-bootstrap';
-
 
 const UserDetailsPage = () => {
 
     const { id } = useParams()
     const [userDB, setUserDB] = useState(undefined)
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         UserAPI
@@ -19,7 +17,7 @@ const UserDetailsPage = () => {
                 setUserDB(userData)
             })
             .catch((err) => {
-                console.log(err.message);
+                console.log(err.message)
             })
             .finally(() => {
                 setLoading(false)
@@ -28,7 +26,7 @@ const UserDetailsPage = () => {
 
     if (loading) {
         // Cambiar por un spinner https://react-bootstrap.github.io/components/spinners/ :O
-        return <h1>Loading...</h1>;
+        return <h1>Loading...</h1>
     }
 
     return (

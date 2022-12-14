@@ -1,4 +1,4 @@
-import InitAxios from './initAxios.service';
+import InitAxios from './initAxios.service'
 
 class ProjectAPI extends InitAxios {
     constructor() {
@@ -26,7 +26,7 @@ class ProjectAPI extends InitAxios {
     deleteProjectById(id) {
         return this.axios
             .delete(`/project/${id}`)
-            .then((response) => response.data);
+            .then((response) => response.data)
     }
 }
 

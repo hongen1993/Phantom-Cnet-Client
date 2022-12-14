@@ -1,4 +1,4 @@
-import InitAxios from './initAxios.service';
+import InitAxios from './initAxios.service'
 
 class AuthService extends InitAxios {
   constructor() {

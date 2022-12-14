@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const ToDo = ({ projectData, updateProjectDB }) => {
+const ToDo = ({ project, setProject, updateProjectDB }) => {
     const [editing, setEditing] = useState(false)
-    const [project, setProject] = useState(projectData)
 
     const handleClick = (value) => {
         setEditing(value)

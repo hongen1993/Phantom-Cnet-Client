@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/auth.context'
 import UserAPI from '../../services/user.service'
 import UserCard from '../../components/UserCard/UserCard'
 
-import "./UsersPage.css"
+import "./AdminGetUsersPage.css"
 
 const UserPage = () => {
     const { user } = useContext(AuthContext)

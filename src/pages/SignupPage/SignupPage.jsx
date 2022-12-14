@@ -1,25 +1,25 @@
-import "./SignupPage.css";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import authService from "../../services/auth.service";
+import "./SignupPage.css"
+import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import authService from "../../services/auth.service"
 import { Button } from 'react-bootstrap'
 
 function SignupPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [errorMessage, setErrorMessage] = useState(undefined);
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [name, setName] = useState("")
+  const [errorMessage, setErrorMessage] = useState(undefined)
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const handleEmail = (e) => setEmail(e.target.value);
-  const handlePassword = (e) => setPassword(e.target.value);
-  const handleName = (e) => setName(e.target.value);
+  const handleEmail = (e) => setEmail(e.target.value)
+  const handlePassword = (e) => setPassword(e.target.value)
+  const handleName = (e) => setName(e.target.value)
 
   const handleSignupSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     // Create an object representing the request body
-    const requestBody = { email, password, name };
+    const requestBody = { email, password, name }
 
     // Send a request to the server using axios
     /* 
@@ -37,12 +37,12 @@ function SignupPage() {
       .signup(requestBody)
       .then((response) => {
         // If the POST request is successful redirect to the login page
-        navigate("/login");
+        navigate("/login")
       })
       .catch((error) => {
         // If the request resolves with an error, set the error message in the state
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
+        const errorDescription = error.response.data.message
+        setErrorMessage(errorDescription)
       });
   };
 

@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom'
 import UserAPI from '../../services/user.service'
 import ProjectAPI from '../../services/project.service'
 
-import "./ProfilePage.css"
+import "./UserProjectsPage.css"
 import { Container, Row, Col, Button } from 'react-bootstrap'
 
-import Project from '../../components/Project/Project'
+import ProjectCard from '../../components/ProjectCard/ProjectCard'
 import CreateProject from '../../components/CreateProject/CreateProject'
 
 const ProfilePage = () => {
@@ -64,7 +64,7 @@ const ProfilePage = () => {
             projects.map((projectDB) => {
               return (
                 <Col sm={3} key={projectDB._id}>
-                  <Project projectDB={projectDB} settingProjects={settingProjects} />
+                  <ProjectCard projectDB={projectDB} settingProjects={settingProjects} />
                   <Link to={`/project/${projectDB._id}`}>Enter</Link>
                   <Button variant='secondary' onClick={() => deleteProject(projectDB._id)}>
                     Delete
