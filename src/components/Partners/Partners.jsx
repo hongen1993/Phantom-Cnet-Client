@@ -4,7 +4,7 @@ import { Form, InputGroup, Button } from 'react-bootstrap'
 import UserAPI from '../../services/user.service'
 import ProjectAPI from '../../services/project.service'
 
-const AddPartner = ({ projectData, settingProject, show, id }) => {
+const AddPartner = ({ projectData, settingProject, setProjectUsers, show, id }) => {
     const [users, setUsers] = useState(undefined)
     const [search, setSearch] = useState('')
 
@@ -27,7 +27,6 @@ const AddPartner = ({ projectData, settingProject, show, id }) => {
 
     useEffect(() => {
         searchPartners()
-        console.log(projectData.user)
     }, [])
 
     if (show === true) {
@@ -48,8 +47,7 @@ const AddPartner = ({ projectData, settingProject, show, id }) => {
                                     <li onClick={() => {
                                         projectData.user.push(userDB._id)
                                         _updateNewProject(projectData)
-                                    }
-                                    } key={userDB._id} >
+                                    }} key={userDB._id} >
                                         <p>{userDB.email}</p>
                                     </li>
                                 )
