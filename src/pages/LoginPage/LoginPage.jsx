@@ -36,7 +36,7 @@ function LoginPage() {
         // and at last navigate to the home page
         storeToken(response.data.token)
         authenticateUser()
-        navigate("/profile")
+        navigate("/project")
       })
       .catch((err) => {
         // If the request resolves with an error, set the error message in the state

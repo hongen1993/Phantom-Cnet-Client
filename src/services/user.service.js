@@ -26,7 +26,7 @@ class UserAPI extends InitAxios {
 
     updateUser(id, body) {
         return this.axios
-            .put(`/${id}`, body)
+            .put(`/editProfile/${id}`, body)
             .then((response) => response.data)
             .catch((err) => console.error(err))
     }

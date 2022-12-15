@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage/HomePage"
 import SignupPage from "./pages/SignupPage/SignupPage"
 import LoginPage from "./pages/LoginPage/LoginPage"
 
+import ProfileEditPage from "./pages/ProfileEditPage/ProfileEditPage"
 import UserProjectsPage from "./pages/UserProjectsPage/UserProjectsPage"
 import UserProjectPage from "./pages/UserProjectPage/UserProjectPage"
 
@@ -51,7 +52,16 @@ function App() {
         />
 
         <Route
-          path="/profile"
+          path="/profile/edit/:id"
+          element={
+            <IsPrivate>
+              <ProfileEditPage />
+            </IsPrivate>
+          }
+        />
+
+        <Route
+          path="/projects"
           element={
             <IsPrivate>
               <UserProjectsPage />

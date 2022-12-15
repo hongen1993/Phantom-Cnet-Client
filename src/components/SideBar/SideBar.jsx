@@ -27,7 +27,7 @@ const SideBar = ({ user }) => {
             .finally(() => {
                 setLoading(false)
             })
-    }, [])
+    }, [sideBar])
 
     if (loading) {
         // Cambiar por un spinner https://react-bootstrap.github.io/components/spinners/ :O
@@ -35,42 +35,47 @@ const SideBar = ({ user }) => {
     }
 
     const userInfo = userData.results
-
     return (
         <>
             <MdAccountCircle size={30} onClick={showSideBar} />
             <nav className={sideBar ? 'nav-menu active' : 'nav-menu'}>
-                <div>
-                    <RiCloseCircleLine size={30} onClick={showSideBar} />
-                </div>
-                <h4>Profile</h4>
+                <h4> Profile </h4>
+                <img src={userInfo.user.image}></img>
                 <ul className="nav-menu-items">
-                    <img></img>
-                    <li>
-                        <p>{
-                            userInfo.user.name
-                        }</p>
+                    <li className='user-name'>
+                        <p>{userInfo.user.name}</p>
                     </li>
-                    <li>
+                    <li className='user-surname'>
+                        <p>{userInfo.user.surname}</p>
+                    </li>
+                    <li className='user-email'>
                         <p>{userInfo.user.email}</p>
                     </li>
-                    <li>
-                        <Link to='/profile'>
-                            Created projects: {userInfo.projects.length}
+                    <li className='created-projects'>
+                        <Link to='/projects'>
+                            My projects ({userInfo.projects.length})
                         </Link>
                     </li>
-                    <li>
+                    <li className='last-project'>
                         <p>Last project created :</p>
-                        <Link to='/'>
-                            {userInfo.projects[userInfo.projects.length - 1].title}
-                        </Link>
+                        {
+                            userInfo.projects.length > 0 ?
+                                < Link className='last-project-link' to={`/project/${userInfo.projects[userInfo.projects.length - 1]?._id}`}>
+                                    {userInfo.projects[userInfo.projects.length - 1]?.title}
+                                </Link>
+                                :
+                                <Link className='empty-projects' to='/projects'>Create new</Link>
+                        }
                     </li>
-                    <li>
+                    <li className='edit-profile'>
                         <Link to={`/profile/edit/${userInfo.user._id}`}>
                             Edit Profile
                         </Link>
                     </li>
                 </ul>
+                <div className="close-button">
+                    <RiCloseCircleLine size={40} onClick={showSideBar} />
+                </div>
             </nav>
         </>
     )

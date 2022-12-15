@@ -8,6 +8,8 @@ function SignupPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [name, setName] = useState("")
+  const [surname, setSurname] = useState("")
+  const [image, setImage] = useState('')
   const [errorMessage, setErrorMessage] = useState(undefined)
 
   const navigate = useNavigate()
@@ -15,11 +17,13 @@ function SignupPage() {
   const handleEmail = (e) => setEmail(e.target.value)
   const handlePassword = (e) => setPassword(e.target.value)
   const handleName = (e) => setName(e.target.value)
+  const handleSurname = (e) => setSurname(e.target.value)
+  const handleImage = (e) => setImage(e.target.value)
 
   const handleSignupSubmit = (e) => {
     e.preventDefault()
     // Create an object representing the request body
-    const requestBody = { email, password, name }
+    const requestBody = { email, password, name, surname, image }
 
     // Send a request to the server using axios
     /* 
@@ -43,9 +47,9 @@ function SignupPage() {
         // If the request resolves with an error, set the error message in the state
         const errorDescription = error.response.data.message
         setErrorMessage(errorDescription)
-      });
-  };
-
+      })
+  }
+  console.log(image)
   return (
     <div className="SignupPage">
       <h1>Sign Up</h1>
@@ -64,6 +68,13 @@ function SignupPage() {
 
         <label>Name:</label>
         <input type="text" name="name" value={name} onChange={handleName} />
+
+        <label>Surname:</label>
+        <input type="text" name="surname" value={surname} onChange={handleSurname} />
+
+        <label>Image</label>
+        <input type="text" name="image" onChange={handleImage} required />
+        <img src={image} alt='image' />
 
         <Button type="submit">Sign Up</Button>
       </form>

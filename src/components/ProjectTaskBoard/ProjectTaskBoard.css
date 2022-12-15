@@ -1,0 +1,111 @@
+.tasks-col-todo {
+    width: 25.75%;
+    margin: 6em 0.9em 2em 5.2em;
+    padding: 0.5em 0 0 2em;
+}
+
+.tasks-col-inprocess {
+    width: 27.75%;
+    margin: 6em 1.9em 2em 2em;
+    padding: 2em 0 0 6em;
+}
+
+.tasks-col-done {
+    width: 29.5%;
+    margin: 6em 3em 2em 1em;
+    padding-left: 8em;
+}
+
+h2,
+p {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+ul {
+    margin-top: -2em;
+    overflow: hidden;
+    padding: 2em;
+}
+
+ul li {
+    text-decoration: none;
+    color: #000;
+    background: rgb(249, 234, 125);
+    display: block;
+    height: 10em;
+    width: 10em;
+    padding: 1em;
+    -moz-box-shadow: 5px 5px 7px rgba(33, 33, 33, 1);
+    -webkit-box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
+    box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
+    -moz-transition: -moz-transform .15s linear;
+    -o-transition: -o-transform .15s linear;
+    -webkit-transition: -webkit-transform .15s linear;
+}
+
+ul li p {
+    font-family: "Reenie Beanie", arial, sans-serif;
+    font-size: 1em;
+}
+
+.tasks-col-todo ul li {
+    -webkit-transform: rotate(-6deg);
+    -o-transform: rotate(-6deg);
+    -moz-transform: rotate(-6deg);
+}
+
+.tasks-col-inprocess ul li {
+    -webkit-transform: rotate(2deg);
+    -o-transform: rotate(2deg);
+    -moz-transform: rotate(2deg);
+}
+
+.tasks-col-done ul li {
+    -webkit-transform: rotate(-1deg);
+    -o-transform: rotate(-1deg);
+    -moz-transform: rotate(-1deg);
+}
+
+ul li:nth-child(even) {
+    -o-transform: rotate(4deg);
+    -webkit-transform: rotate(4deg);
+    -moz-transform: rotate(4deg);
+    position: relative;
+    top: 5px;
+    background: #cfc;
+}
+
+ul li:nth-child(3n) {
+    -o-transform: rotate(-3deg);
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    position: relative;
+    top: -5px;
+    background: #ccf;
+}
+
+ul li:nth-child(5n) {
+    -o-transform: rotate(5deg);
+    -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    position: relative;
+    top: -10px;
+}
+
+ul li:hover,
+ul li:focus {
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
+    -moz-box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
+    -webkit-box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
+    -webkit-transform: scale(1.15);
+    -moz-transform: scale(1.15);
+    -o-transform: scale(1.15);
+    position: relative;
+    z-index: 5;
+}

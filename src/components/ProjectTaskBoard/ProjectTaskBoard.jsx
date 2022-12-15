@@ -2,17 +2,17 @@ import ToDo from '../ToDo/ToDo'
 import { Col, Row, Button } from 'react-bootstrap'
 import { useState } from 'react'
 
+import './ProjectTaskBoard.css'
+
 const ProjectTaskBoard = ({ projectData, updateProjectDB }) => {
     const [project, setProject] = useState(projectData)
 
     return (
         <Row>
-            <Col sm={4}>
-                <h3>To Do</h3>
+            <Col className='tasks-col-todo' sm={3}>
                 <ToDo project={project} setProject={setProject} updateProjectDB={updateProjectDB} />
             </Col>
-            <Col sm={4}>
-                <h3>In process</h3>
+            <Col className='tasks-col-inprocess' sm={3}>
                 <ul>{
                     project?.inProcess.map((text, index) => {
                         return (
@@ -33,8 +33,7 @@ const ProjectTaskBoard = ({ projectData, updateProjectDB }) => {
                     })
                 }</ul>
             </Col>
-            <Col sm={4}>
-                <h3>Done</h3>
+            <Col className='tasks-col-done' sm={3}>
                 <ul>{
                     project?.done.map((text, index) => {
                         return (

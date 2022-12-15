@@ -1,0 +1,176 @@
+.nav-menu {
+    background-color: rgb(5, 68, 104);
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: 850ms;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    color: rgb(206, 240, 253);
+    text-transform: capitalize;
+}
+
+.nav-menu h4 {
+    width: 100%;
+    margin-top: 2em;
+    text-decoration-line: underline overline;
+    text-underline-offset: 10px;
+}
+
+.nav-menu img {
+    display: block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-top: 2em;
+}
+
+.nav-menu li {
+    list-style: none;
+    margin-left: -2em;
+}
+
+.nav-menu.active {
+    left: 0;
+    transition: 350ms;
+}
+
+.nav-menu .user-name {
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-top: .5em;
+}
+
+.nav-menu .user-surname {
+    font-size: 1.25em;
+    font-weight: 700;
+    margin-top: -.85em;
+}
+
+.nav-menu .user-email {
+    font-size: .85em;
+}
+
+.nav-text {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    list-style: none;
+    height: 60px;
+}
+
+.nav-text a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+}
+
+.nav-text a:hover {
+    background-color: blue;
+}
+
+.nav-menu-items {
+    width: 100%;
+    margin: 1em 0em;
+}
+
+
+.navbar-toggle {
+    width: 100%;
+    height: 80px;
+    display: flex;
+}
+
+.created-projects {
+    margin-top: 3em;
+    margin-bottom: 1.5em;
+}
+
+.created-projects a {
+    color: rgb(206, 240, 253);
+    text-decoration-line: underline;
+    text-decoration-thickness: 5%;
+    text-underline-offset: 2px;
+}
+
+.last-project-link {
+    align-self: center;
+    background-color: #fff;
+    background-image: none;
+    background-position: 0 90%;
+    background-repeat: repeat no-repeat;
+    background-size: 4px 3px;
+    border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+    box-sizing: border-box;
+    color: #41403e;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Neucha, sans-serif;
+    font-size: 1rem;
+    line-height: 23px;
+    outline: none;
+    padding: 1rem;
+    text-decoration: none;
+    transition: all 235ms ease-in-out;
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.last-project-link:hover {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+    transform: translate3d(-1px, 3px, 0);
+    color: black !important;
+}
+
+.last-project-link:focus {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}
+
+.last-project .empty-projects {
+    color: rgb(206, 240, 253);
+    text-decoration-thickness: 5%;
+    text-underline-offset: 2px;
+}
+
+.edit-profile {
+    margin-top: 1.5em;
+}
+
+.edit-profile a {
+    color: rgb(206, 240, 253);
+    margin-top: 1em;
+    text-decoration-thickness: 5%;
+    text-underline-offset: 2px;
+}
+
+.close-button {
+    margin: .75em;
+    cursor: pointer;
+    transform: scale(.75);
+    transition-duration: .5s
+}
+
+.close-button:hover {
+    transform: scale(1);
+}

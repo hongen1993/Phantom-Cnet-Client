@@ -1,0 +1,14 @@
+.project-page {
+    background-image: url(../../../public/project-board.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    margin-top: 2em;
+}
+
+.project-page h2 {
+    color: #f9fff2;
+    padding-top: .5em;
+}

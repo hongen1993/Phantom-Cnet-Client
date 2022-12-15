@@ -10,6 +10,8 @@ import UserAPI from '../../services/user.service'
 import ProjectTaskBoard from "../../components/ProjectTaskBoard/ProjectTaskBoard"
 import Partners from "../../components/Partners/Partners"
 
+import './UserProjectPage.css'
+
 const UpdateProject = () => {
     const { user } = useContext(AuthContext)
     const { id } = useParams()
@@ -75,7 +77,7 @@ const UpdateProject = () => {
 
     useEffect(() => {
         setProjectUsers()
-    }, [projectPartners])
+    }, [])
 
     if (loading) {
         // Cambiar por un spinner https://react-bootstrap.github.io/components/spinners/ :O
@@ -87,12 +89,9 @@ const UpdateProject = () => {
     const projectData = project.project
 
     return (
-        <>
+        <div className="project-page">
             <h2>{projectData.title}</h2>
-
-            <Container>
-                <ProjectTaskBoard projectData={projectData} updateProjectDB={updateProjectDB} />
-            </Container>
+            <ProjectTaskBoard projectData={projectData} updateProjectDB={updateProjectDB} />
             <p>Project users: {projectPartners.map((partner, key) => <Button key={key}
                 onClick={() => {
 
@@ -102,7 +101,7 @@ const UpdateProject = () => {
             <div>
                 <Partners projectData={projectData} settingProject={settingProject} setProjectUsers={setProjectUsers} show={show} id={id} />
             </div>
-        </>
+        </div>
     )
 }
 

@@ -53,7 +53,7 @@ const ProfilePage = () => {
   }
 
   return (
-    <div>
+    <div class="projects-page">
       <div>
         <h2>Projects</h2>
       </div>
