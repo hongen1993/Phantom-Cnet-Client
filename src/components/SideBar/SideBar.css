@@ -1,6 +1,6 @@
 .nav-menu {
-    background-color: rgb(5, 68, 104);
-    width: 250px;
+    background-color: rgba(0, 0, 0, 0.85);
+    width: 300px;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -11,8 +11,9 @@
     align-content: flex-start;
     flex-wrap: wrap;
     flex-direction: row-reverse;
-    color: rgb(206, 240, 253);
+    color: rgba(255, 255, 255, 0.9);
     text-transform: capitalize;
+    z-index: 100;
 }
 
 .nav-menu h4 {
@@ -20,6 +21,10 @@
     margin-top: 2em;
     text-decoration-line: underline overline;
     text-underline-offset: 10px;
+}
+
+.account-circle {
+    cursor: pointer;
 }
 
 .nav-menu img {
@@ -100,7 +105,7 @@
 }
 
 .created-projects a {
-    color: rgb(206, 240, 253);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration-line: underline;
     text-decoration-thickness: 5%;
     text-underline-offset: 2px;
@@ -148,7 +153,7 @@
 }
 
 .last-project .empty-projects {
-    color: rgb(206, 240, 253);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration-thickness: 5%;
     text-underline-offset: 2px;
 }
@@ -158,7 +163,7 @@
 }
 
 .edit-profile a {
-    color: rgb(206, 240, 253);
+    color: rgba(255, 255, 255, 0.9);
     margin-top: 1em;
     text-decoration-thickness: 5%;
     text-underline-offset: 2px;

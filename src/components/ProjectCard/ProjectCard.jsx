@@ -2,6 +2,7 @@ import ProjectAPI from '../../services/project.service'
 import { AuthContext } from '../../context/auth.context'
 
 import { Form, Button } from 'react-bootstrap'
+import './ProjectCard.css'
 
 import { useState, useContext } from 'react'
 
@@ -33,7 +34,9 @@ const ProjectCard = ({ projectDB, settingProjects }) => {
 
     if (editing === true) {
         return (
-            <Form onSubmit={updateProject}>
+            < Form
+                className='project-title-form'
+                onSubmit={updateProject}>
                 <Form.Control
                     onChange={updateNewProject}
                     type='text'
@@ -45,7 +48,7 @@ const ProjectCard = ({ projectDB, settingProjects }) => {
         )
     } else {
         return (
-            <div onClick={() => { handleClick(true) }}>
+            <div className='project-card-data' onClick={() => { handleClick(true) }}>
                 <h3>{projectDB.title}</h3>
             </div>
         )

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
+import './ToDo.css'
 
 const ToDo = ({ project, setProject, updateProjectDB }) => {
     const [editing, setEditing] = useState(false)
@@ -52,33 +53,35 @@ const ToDo = ({ project, setProject, updateProjectDB }) => {
     } else {
         return (
             <div>
-                <ul>{
+                <ul className='project-taskboard-ul'>{
                     project?.toDo.map((text, index) => {
 
                         return (
-                            <li key={`toDo${index}`}>
+                            <li className='todo-li' key={`toDo${index}`}>
+                                <Button className='delete-todo' onClick={() => {
+                                    return (
+                                        project.toDo.splice(index, 1),
+                                        updateProjectDB(project)
+                                    )
+                                }}>✕</Button>
                                 <p onClick={() => { handleClick(true) }}>
-                                    {index + 1}: {text}
+                                    {text}
                                 </p>
-                                <Button onClick={() => {
+                                <Button className='task-move-right task-move-right-inprocess' onClick={() => {
                                     return (
                                         project.inProcess.push(project.toDo[index]),
                                         project.toDo.splice(index, 1),
                                         updateProjectDB(project)
                                     )
-                                }}>To Process</Button>
-                                <Button onClick={() => {
-                                    return (
-                                        project.toDo.splice(index, 1),
-                                        updateProjectDB(project)
-                                    )
-                                }}>Delete</Button>
+                                }}>
+                                    <img src="https://img.icons8.com/ios-glyphs/30/null/forward-arrow.png" />
+                                </Button>
                             </li>
                         )
                     })
                 }
                 </ul>
-                <Button onClick={addTask}>+</Button>
+                <Button className='todo-add-button' onClick={addTask}>+</Button>
             </div >
         )
     }

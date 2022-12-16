@@ -13,41 +13,48 @@ const ProjectTaskBoard = ({ projectData, updateProjectDB }) => {
                 <ToDo project={project} setProject={setProject} updateProjectDB={updateProjectDB} />
             </Col>
             <Col className='tasks-col-inprocess' sm={3}>
-                <ul>{
+                <ul className='project-taskboard-ul'>{
                     project?.inProcess.map((text, index) => {
                         return (
-                            <li key={`inProcess${index}`}>
-                                <p>{index + 1}: {text}</p>
-                                <Button onClick={() => {
+                            <li className='inprocess-li' key={`inProcess${index}`}>
+                                <p>{text}</p>
+                                <Button className='task-move-left' onClick={() => {
                                     project.toDo.push(project.inProcess[index])
                                     project.inProcess.splice(index, 1)
                                     updateProjectDB(project)
-                                }}>To Do</Button>
-                                <Button onClick={() => {
+                                }}>
+                                    <img src="https://img.icons8.com/ios-glyphs/30/null/reply-arrow.png" />
+                                </Button>
+                                <Button className='task-move-right' onClick={() => {
                                     project.done.push(project.inProcess[index])
                                     project.inProcess.splice(index, 1)
                                     updateProjectDB(project)
-                                }}>Done</Button>
+                                }}>
+                                    <img src="https://img.icons8.com/ios-glyphs/30/null/forward-arrow.png" />
+                                </Button>
                             </li>
                         )
                     })
                 }</ul>
             </Col>
             <Col className='tasks-col-done' sm={3}>
-                <ul>{
+                <ul className='project-taskboard-ul'>{
                     project?.done.map((text, index) => {
                         return (
                             <li key={`done${index}`}>
-                                <p>{index + 1}: {text}</p>
-                                <Button onClick={() => {
+                                <Button className='delete-done' onClick={() => {
+                                    project.done.splice(index, 1)
+                                    updateProjectDB(project)
+                                }}>✕</Button>
+                                <p>{text}</p>
+                                <Button className='task-move-left' onClick={() => {
                                     project.inProcess.push(project.done[index])
                                     project.done.splice(index, 1)
                                     updateProjectDB(project)
-                                }}>To Do</Button>
-                                <Button onClick={() => {
-                                    project.done.splice(index, 1)
-                                    updateProjectDB(project)
-                                }}>Remove</Button>
+                                }}>
+                                    <img src="https://img.icons8.com/ios-glyphs/30/null/reply-arrow.png" />
+                                </Button>
+
                             </li>
                         )
                     })

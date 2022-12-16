@@ -11,42 +11,29 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext)
 
   return (
-    <nav>
-      <Link to="/">
-        <Button>Home</Button>
-      </Link>
-
-      {isLoggedIn && (
-        <>
-          <Link to="/projects">
-            <Button>Projects</Button>
-          </Link>
-          <Button onClick={logOutUser}>Logout</Button>
-
-          <SideBar user={user} />
-
-          {user.role === 'Admin' && (
-            <Link to='/users'>
-              <Button>All Users</Button>
-            </Link>
+    < header >
+      <img src="https://media-exp1.licdn.com/dms/image/C4E0BAQHRuFZ8VLSIxg/company-logo_200_200/0/1559573464734?e=2147483647&v=beta&t=NlMUr-2x9flE3328dyaojHaVure_AiAT1p2Qg7T6Qss" alt="logo" class="logo" />
+      <nav>
+        <ul className="nav__links">
+          <li className="navlinks-li"><Link to="/">Home</Link></li>
+          {isLoggedIn && (
+            <>
+              <li className="navlinks-li"><Link to="/projects">Projects</Link></li>
+              <li className="navlinks-li"><Link onClick={logOutUser}>Logout</Link></li>
+              <li className="navlinks-li"><SideBar user={user} /></li>
+              {user.role === 'Admin' && (
+                <li className="navlinks-li"><Link to='/users'>All Users</Link></li>
+              )}
+            </>
           )}
-
-        </>
-      )}
-
-      {!isLoggedIn && (
-        <>
-          <Link to="/signup">
-            {" "}
-            <Button>Sign Up</Button>{" "}
-          </Link>
-          <Link to="/login">
-            {" "}
-            <Button>Login</Button>{" "}
-          </Link>
-        </>
-      )}
-    </nav>
+          {!isLoggedIn && (
+            <>
+              <Link className="cta" to="/login"><button>Login</button></Link>
+            </>
+          )}
+        </ul>
+      </nav>
+    </header>
   );
 }
 

@@ -1,0 +1,58 @@
+.signup-page {
+    height: 100vh;
+    width: 100vw;
+    background-image: url(../../../public/signup.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.signup-page form {
+    text-align: center;
+    background-color: white;
+    width: 500px;
+    margin-top: 3em;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding-bottom: 3em;
+}
+
+.signup-form {
+    padding-top: 5em;
+}
+
+#form-head {
+    font-size: 30px;
+    padding-top: 35px;
+    padding-bottom: 5px;
+}
+
+.signup-page .input-box {
+    font-size: 15px;
+    padding-bottom: 12px;
+    margin-bottom: 36px;
+    border: 0;
+    border-bottom: 1px solid grey;
+    width: 100%;
+}
+
+#input-area {
+    padding: 0px 80px 40px 80px;
+}
+
+#btn {
+    margin: 1em;
+    padding: 5px 10px;
+    font-size: 18px;
+    color: black;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: transparent;
+}
+
+.already-account {
+    margin-top: -5em;
+}

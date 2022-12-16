@@ -1,0 +1,37 @@
+.home {
+    background-image: url(../../../public/Phantom\ letters-only.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70% 70%;
+    height: 100vh;
+    width: 100%;
+    color: rgba(255, 255, 255, 1);
+    background-color: black;
+    font-family: Neucha, sans-serif;
+}
+
+.home h1 {
+    padding-top: 8em;
+}
+
+.home p {
+    padding: 2em 8em 0 8em;
+}
+
+/* .image-a {
+    background-image: url(../../../public/phantom-right.png);
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 10%;
+    left: 20%;
+}
+
+.image-b {
+    background-image: url(../../../public/left-phantom.png);
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    position: absolute
+} */

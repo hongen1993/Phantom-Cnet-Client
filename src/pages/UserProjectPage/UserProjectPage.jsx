@@ -1,7 +1,7 @@
-import { useEffect, useState, useContext } from "react"
+import { useEffect, useState, useContext, useRef } from "react"
 import { Container, Button } from 'react-bootstrap'
 
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/auth.context'
 
 import ProjectAPI from '../../services/project.service'
@@ -11,6 +11,7 @@ import ProjectTaskBoard from "../../components/ProjectTaskBoard/ProjectTaskBoard
 import Partners from "../../components/Partners/Partners"
 
 import './UserProjectPage.css'
+import backgroundVideo from '../../components/Video/project-2video.mp4'
 
 const UpdateProject = () => {
     const { user } = useContext(AuthContext)
@@ -19,6 +20,10 @@ const UpdateProject = () => {
     const [loading, setLoading] = useState(true)
     const [show, setShow] = useState(false)
     const [projectPartners, setprojectPartners] = useState(user.email)
+    const [displayPage, setDisplayPage] = useState(true)
+
+    const navigate = useNavigate()
+    const videoRef = useRef()
 
     const settingProject = (id) => {
         ProjectAPI
@@ -39,12 +44,12 @@ const UpdateProject = () => {
             .updateProjectById(project._id, project)
             .then(() => {
                 settingProject(id)
+                setProjectUsers()
             })
     }
 
     const setProjectUsers = () => {
         let aux = []
-
         ProjectAPI
             .getProjectById(id)
             .then((dbProject) => {
@@ -72,7 +77,6 @@ const UpdateProject = () => {
             .finally(() => {
                 setLoading(false)
             })
-
     }
 
     useEffect(() => {
@@ -89,19 +93,44 @@ const UpdateProject = () => {
     const projectData = project.project
 
     return (
-        <div className="project-page">
-            <h2>{projectData.title}</h2>
+        <div className={displayPage ? "project-page" : 'project-pageB'}>
+            <video ref={videoRef} className='videoTagB' muted>
+                <source src={backgroundVideo} type='video/mp4' />
+            </video>
+            <div className="project-page-title">
+                <h3>{projectData.title}</h3>
+            </div>
             <ProjectTaskBoard projectData={projectData} updateProjectDB={updateProjectDB} />
-            <p>Project users: {projectPartners.map((partner, key) => <Button key={key}
-                onClick={() => {
-
-                }}>{partner} </Button>
-            )}</p>
-            <Button onClick={handleShowSearch} >Add partner</Button>
-            <div>
+            <div className="project-users">
+                <p>Project users: </p>
+                <Button className='add-project-user' onClick={handleShowSearch} >+</Button>
+                <div className='project-users-button'>
+                    {projectPartners?.map((partner, index) =>
+                        <div className='partner-card' key={`partner${index}`} >
+                            <span>{partner}</span>
+                            <button className='partner-card-button' onClick={() => {
+                                project.project.user.splice(index, 1)
+                                updateProjectDB(project.project)
+                            }}>
+                                ✕
+                            </button>
+                        </div>
+                    )}
+                </div>
+            </div >
+            <div className="project-users-form">
                 <Partners projectData={projectData} settingProject={settingProject} setProjectUsers={setProjectUsers} show={show} id={id} />
             </div>
-        </div>
+            <Button className='back-to-projects' onClick={() => {
+                setDisplayPage(false)
+                videoRef.current.play()
+                setTimeout(() => {
+                    navigate(`/projects`)
+                }, 2300);
+            }}>
+                Back
+            </Button>
+        </div >
     )
 }
 

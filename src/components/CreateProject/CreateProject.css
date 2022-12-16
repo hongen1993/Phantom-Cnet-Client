@@ -1,0 +1,21 @@
+.create-project {
+    text-align: start;
+    font-weight: 600;
+    margin-left: 10em;
+}
+
+.create-project button {
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.85);
+    border-color: rgba(0, 0, 0, 0.85);
+    font-weight: 600;
+    transform: scale(.8);
+    transition: 0.3s ease;
+}
+
+.create-project button:hover {
+    transform: scale(1);
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.85);
+    border-color: rgba(0, 0, 0, 0.85);
+}

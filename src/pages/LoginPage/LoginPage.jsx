@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import authService from "../../services/auth.service"
 import { Button } from 'react-bootstrap'
+import Navbar from "../../components/Navbar/Navbar"
+
 
 function LoginPage() {
   const [email, setEmail] = useState("")
@@ -36,7 +38,7 @@ function LoginPage() {
         // and at last navigate to the home page
         storeToken(response.data.token)
         authenticateUser()
-        navigate("/project")
+        navigate("/projects")
       })
       .catch((err) => {
         // If the request resolves with an error, set the error message in the state
@@ -46,28 +48,35 @@ function LoginPage() {
   }
 
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
-
-      <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
-
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-
-        <Button type="submit">Login</Button>
-      </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
-    </div>
+    <>
+      <Navbar />
+      <div className="login-page">
+        <section id="content">
+          <form onSubmit={handleLoginSubmit}>
+            <h1>Login Form</h1>
+            <div>
+              <input type="email" placeholder="Email" required="" id="email" value={email} onChange={handleEmail} />
+            </div>
+            <div>
+              <input
+                type="password"
+                name="password"
+                value={password}
+                id="password"
+                placeholder="Password"
+                onChange={handlePassword}
+              />
+            </div>
+            <div>
+              <input type="submit" value="Log in" />
+              <p>Don't have an account yet?</p>
+              <Link to={"/signup"}> Sign Up</Link>
+            </div>
+          </form>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+        </section>
+      </div>
+    </>
   )
 }
 

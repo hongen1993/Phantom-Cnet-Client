@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
-import Navbar from "./components/Navbar/Navbar"
 
 import HomePage from "./pages/HomePage/HomePage"
 import SignupPage from "./pages/SignupPage/SignupPage"
@@ -23,8 +22,6 @@ import IsAnon from "./components/IsAnon/IsAnon"
 function App() {
   return (
     <div className="App">
-      <Navbar />
-
       <Routes>
 
         <Route

@@ -1,45 +1,44 @@
 .tasks-col-todo {
     width: 25.75%;
-    margin: 6em 0.9em 2em 5.2em;
-    padding: 0.5em 0 0 2em;
+    margin: 2.5em 0.9em 2em 5.2em;
+    padding: 0.5em 0 0 4.5em;
 }
 
 .tasks-col-inprocess {
     width: 27.75%;
-    margin: 6em 1.9em 2em 2em;
+    margin: 1.5em 1.9em 2em 2em;
     padding: 2em 0 0 6em;
 }
 
 .tasks-col-done {
     width: 29.5%;
-    margin: 6em 3em 2em 1em;
-    padding-left: 8em;
+    margin: 1.8em 3em 2em 1em;
+    padding-left: 6em;
 }
 
-h2,
 p {
     font-size: 100%;
     font-weight: normal;
 }
 
-ul,
+.project-taskboard-ul,
 li {
     list-style: none;
 }
 
-ul {
+.project-taskboard-ul {
     margin-top: -2em;
     overflow: hidden;
     padding: 2em;
 }
 
-ul li {
+.project-taskboard-ul li {
     text-decoration: none;
     color: #000;
     background: rgb(249, 234, 125);
     display: block;
-    height: 11em;
-    width: 12.5em;
+    height: 9.5em;
+    width: 11em;
     padding: 1em .5em;
     -moz-box-shadow: 5px 5px 7px rgba(33, 33, 33, 1);
     -webkit-box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
@@ -49,7 +48,7 @@ ul li {
     -webkit-transition: -webkit-transform .15s linear;
 }
 
-ul li p {
+.project-taskboard-ul li p {
     font-family: 'Indie Flower',
         cursive, arial, sans-serif;
     font-size: 1.15em;
@@ -68,12 +67,12 @@ ul li p {
 }
 
 .tasks-col-done ul li {
-    -webkit-transform: rotate(-1deg);
-    -o-transform: rotate(-1deg);
-    -moz-transform: rotate(-1deg);
+    -webkit-transform: rotate(-3deg);
+    -o-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
 }
 
-ul li:nth-child(even) {
+.project-taskboard-ul li:nth-child(even) {
     -o-transform: rotate(4deg);
     -webkit-transform: rotate(4deg);
     -moz-transform: rotate(4deg);
@@ -82,7 +81,7 @@ ul li:nth-child(even) {
     background: #cfc;
 }
 
-ul li:nth-child(3n) {
+.project-taskboard-ul li:nth-child(3n) {
     -o-transform: rotate(-3deg);
     -webkit-transform: rotate(-3deg);
     -moz-transform: rotate(-3deg);
@@ -91,7 +90,7 @@ ul li:nth-child(3n) {
     background: #ccf;
 }
 
-ul li:nth-child(5n) {
+.project-taskboard-ul li:nth-child(5n) {
     -o-transform: rotate(5deg);
     -webkit-transform: rotate(5deg);
     -moz-transform: rotate(5deg);
@@ -99,8 +98,8 @@ ul li:nth-child(5n) {
     top: -10px;
 }
 
-ul li:hover,
-ul li:focus {
+.project-taskboard-ul li:hover,
+.project-taskboard-ul li:focus {
     box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
     -moz-box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
     -webkit-box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
@@ -109,4 +108,77 @@ ul li:focus {
     -o-transform: scale(1.15);
     position: relative;
     z-index: 5;
+}
+
+.project-taskboard-ul .todo-li p {
+    margin-top: -1em;
+}
+
+.delete-done {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: relative;
+    left: 85%;
+    top: -11%;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    border: none;
+    border-radius: 20px;
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(.8);
+}
+
+.delete-done:hover {
+    transform: scale(1);
+    background-color: rgb(255, 8, 0);
+    font-size: 11px;
+}
+
+.task-move-right {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    -webkit-transform: rotate(30deg) scale(0.8);
+    -ms-transform: rotate(30deg) scale(0.8);
+    transform: rotate(30deg) scale(0.8);
+    transition: 0.3s ease;
+}
+
+.task-move-right:hover {
+    background-color: rgba(0, 0, 0, 0);
+    -webkit-transform: rotate(30deg) scale(1.1);
+    -ms-transform: rotate(30deg) scale(1.1);
+    transform: rotate(30deg) scale(1.1);
+}
+
+.project-taskboard-ul .task-move-right {
+    position: absolute;
+    top: 73%;
+    right: 0%;
+}
+
+.project-taskboard-ul .task-move-left {
+    position: absolute;
+    left: 0%;
+    bottom: 0%;
+}
+
+.project-taskboard-ul .task-move-left {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    -webkit-transform: rotate(-30deg) scale(0.8);
+    -ms-transform: rotate(-30deg) scale(0.8);
+    transform: rotate(-30deg) scale(0.8);
+    transition: 0.3s ease;
+}
+
+.task-move-left:hover {
+    background-color: rgba(0, 0, 0, 0);
+    -webkit-transform: rotate(-30deg) scale(1.1);
+    -ms-transform: rotate(-30deg) scale(1.1);
+    transform: rotate(-30deg) scale(1.1);
 }

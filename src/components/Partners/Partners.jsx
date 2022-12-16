@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Form, InputGroup, Button } from 'react-bootstrap'
+import './Partners.css'
 
 import UserAPI from '../../services/user.service'
 import ProjectAPI from '../../services/project.service'
@@ -22,6 +23,8 @@ const AddPartner = ({ projectData, settingProject, setProjectUsers, show, id }) 
             .updateProjectById(_projectData._id, _projectData)
             .then(() => {
                 settingProject(id)
+                searchPartners()
+                setProjectUsers()
             })
     }
 
@@ -37,7 +40,7 @@ const AddPartner = ({ projectData, settingProject, setProjectUsers, show, id }) 
                         <Form.Control onChange={(e) => setSearch(e.target.value)} placeholder='Search' />
                     </InputGroup>
                 </Form>
-                <ul>
+                <ul className='user-search-dropdown'>
                     {
                         users?.results.filter((item) => {
                             return search.toLowerCase() === '' ? item : item.email.toLowerCase().includes(search)
@@ -47,7 +50,8 @@ const AddPartner = ({ projectData, settingProject, setProjectUsers, show, id }) 
                                     <li onClick={() => {
                                         projectData.user.push(userDB._id)
                                         _updateNewProject(projectData)
-                                    }} key={userDB._id} >
+                                    }
+                                    } key={userDB._id} >
                                         <p>{userDB.email}</p>
                                     </li>
                                 )

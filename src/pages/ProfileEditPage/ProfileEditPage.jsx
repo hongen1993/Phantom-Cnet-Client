@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { Form, Button } from 'react-bootstrap'
 
 import UserAPI from '../../services/user.service'
+import Navbar from "../../components/Navbar/Navbar"
 
 const ProfileEditPage = () => {
     const [userData, setUserData] = useState(undefined)
@@ -48,47 +49,51 @@ const ProfileEditPage = () => {
     }
 
     return (
-        <Form onSubmit={updateUser}>
-            <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                    onChange={updateNewUser}
-                    type='text'
-                    name='email'
-                // value={userData.results.user.email}
-                />
-            </Form.Group>
-            <Form.Group className='mb-3' controlId='exampleForm.ControlInput2'>
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                    type='text'
-                    onChange={updateNewUser}
-                    name='name'
-                // value={userData.results.user.name}
-                />
-            </Form.Group>
-            <Form.Group className='mb-3' controlId='exampleForm.ControlInput3'>
-                <Form.Label>Surname</Form.Label>
-                <Form.Control
-                    type='text'
-                    onChange={updateNewUser}
-                    name='surname'
-                // value={userData.results.user.surname}
-                />
-            </Form.Group>
-            <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
-                <Form.Label>Image</Form.Label>
-                <Form.Control
-                    type='text'
-                    onChange={updateNewUser}
-                    name='image'
-                // value={userData.results.user.image}
-                />
-            </Form.Group>
-            <Button variant='primary' type='submit'>
-                Update
-            </Button>
-        </Form>
+        <>
+            <Navbar />
+
+            <Form onSubmit={updateUser}>
+                <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                        onChange={updateNewUser}
+                        type='text'
+                        name='email'
+                    // value={userData.results.user.email}
+                    />
+                </Form.Group>
+                <Form.Group className='mb-3' controlId='exampleForm.ControlInput2'>
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control
+                        type='text'
+                        onChange={updateNewUser}
+                        name='name'
+                    // value={userData.results.user.name}
+                    />
+                </Form.Group>
+                <Form.Group className='mb-3' controlId='exampleForm.ControlInput3'>
+                    <Form.Label>Surname</Form.Label>
+                    <Form.Control
+                        type='text'
+                        onChange={updateNewUser}
+                        name='surname'
+                    // value={userData.results.user.surname}
+                    />
+                </Form.Group>
+                <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
+                    <Form.Label>Image</Form.Label>
+                    <Form.Control
+                        type='text'
+                        onChange={updateNewUser}
+                        name='image'
+                    // value={userData.results.user.image}
+                    />
+                </Form.Group>
+                <Button variant='primary' type='submit'>
+                    Update
+                </Button>
+            </Form>
+        </>
     )
 
 }

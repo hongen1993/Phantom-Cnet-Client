@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import authService from "../../services/auth.service"
 import { Button } from 'react-bootstrap'
+import Navbar from "../../components/Navbar/Navbar"
 
 function SignupPage() {
   const [email, setEmail] = useState("")
@@ -51,40 +52,54 @@ function SignupPage() {
   }
   console.log(image)
   return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+    <>
+      <Navbar />
+      <div className="signup-page">
+        <div className="signup-form">
+          <form onSubmit={handleSignupSubmit}>
+            <h1 id="form-head">Sign Up</h1>
+            <div id="input-area">
+              <div>
+                <input className="input-box" type="text" name="name" value={name} onChange={handleName} placeholder="Name" />
 
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+              </div>
+              <div>
+                <input className="input-box" type="text" name="surname" value={surname} onChange={handleSurname} placeholder="Surname" />
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+              </div>
+              <div>
+                <input className="input-box" type="email" name="email" value={email} onChange={handleEmail} placeholder="E-mail" />
+              </div>
+              <div>
+                <input
+                  className="input-box"
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={handlePassword}
+                  placeholder="Password"
+                />
 
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
+              </div>
+              <label>Image</label>
+              <input type="text" name="image" onChange={handleImage} required />
+              <img src={image} alt='image' />
 
-        <label>Surname:</label>
-        <input type="text" name="surname" value={surname} onChange={handleSurname} />
+              <input id="btn" type="submit" value="Sign Up" />
 
-        <label>Image</label>
-        <input type="text" name="image" onChange={handleImage} required />
-        <img src={image} alt='image' />
+            </div>
+          </form>
 
-        <Button type="submit">Sign Up</Button>
-      </form>
-
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
-    </div>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+          <div class='already-account'>
+            <p>Already have account?</p>
+            <Link to={"/login"}> Login</Link>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
 export default SignupPage;
+

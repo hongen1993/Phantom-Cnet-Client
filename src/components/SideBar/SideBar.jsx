@@ -37,7 +37,7 @@ const SideBar = ({ user }) => {
     const userInfo = userData.results
     return (
         <>
-            <MdAccountCircle size={30} onClick={showSideBar} />
+            <MdAccountCircle className='account-circle' size={30} onClick={showSideBar} />
             <nav className={sideBar ? 'nav-menu active' : 'nav-menu'}>
                 <h4> Profile </h4>
                 <img src={userInfo.user.image}></img>
