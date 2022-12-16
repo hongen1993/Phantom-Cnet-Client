@@ -33,22 +33,26 @@ const ToDo = ({ project, setProject, updateProjectDB }) => {
 
     if (editing === true) {
         return (
-            <Form onSubmit={_updateProject}>
-                {
-                    project?.toDo.map((text, index) => {
-                        return (
-                            <Form.Control
-                                key={`toDO${index}`}
-                                onChange={(e) => _updateNewProject(e, index)}
-                                type='text'
-                                name='toDo'
-                                placeholder={text}
-                                value={text}
-                            />)
-                    })
-                }
-                <Button variant='primary' type='submit' hidden />
-            </Form>
+            <div className='todo-form-card'>
+                <Form
+                    className='todo-form'
+                    onSubmit={_updateProject}>
+                    {
+                        project?.toDo.map((text, index) => {
+                            return (
+                                <Form.Control
+                                    key={`toDO${index}`}
+                                    onChange={(e) => _updateNewProject(e, index)}
+                                    type='text'
+                                    name='toDo'
+                                    placeholder={text}
+                                    value={text}
+                                />)
+                        })
+                    }
+                    <Button variant='primary' type='submit' hidden />
+                </Form>
+            </div>
         )
     } else {
         return (
